@@ -1,0 +1,15 @@
+.cards-grid__like {
+    width: 24px;
+    height: 19px;
+    border: none;
+    background: url('../../../images/like/like.png');
+    background-size: 23px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+.cards-grid__like:hover {
+    opacity: 0.5;
+}

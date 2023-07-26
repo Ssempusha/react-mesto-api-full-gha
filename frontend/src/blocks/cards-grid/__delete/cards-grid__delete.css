@@ -1,0 +1,17 @@
+.cards-grid__delete {
+    background: url('../../../images/delete-icon/trash.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    transition: opacity .2s ease;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 18px;
+    height: 19px;
+}
+
+.cards-grid__delete:hover {
+    opacity: 0.6;
+}

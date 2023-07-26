@@ -1,0 +1,15 @@
+.auth__question {
+    color: #FFF;
+    margin: 0;
+    margin-top: 15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .auth__question {
+        margin-top: 20px;
+    }
+}

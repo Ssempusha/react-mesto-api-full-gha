@@ -1,0 +1,29 @@
+.popup__cross {
+    background-image: url('../../../images/close/closeIcon.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    background-color: transparent;
+    border: none;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+.popup__cross:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__cross {
+        background-size: 20px 20px;
+        width: 26px;
+        height: 26px;
+        top: -40px;
+        right: 0;
+    }
+}
