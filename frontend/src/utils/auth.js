@@ -29,11 +29,11 @@ export const authorization = (email, password) => {
     .then((res) => checkResponse(res));
   }
 
-export const tokenCheck = (token) => {
+export const tokenCheck = () => {
   return fetch(`${BASE_URL}/users/me`, {
     credentials: 'include',
     method: 'GET',
-    headers: {'Content-Type': 'application/json', "Authorization" : `Bearer ${token}`},
+    headers: {'Content-Type': 'application/json'},
   })
     .then((res) => checkResponse(res));
   };
