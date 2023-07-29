@@ -18,7 +18,12 @@ const cardsRouter = require('./routes/cards');
 const { regexUrl } = require('./utils/constants');
 const { limiter } = require('./utils/limiter');
 
-app.use(cors({ origin: 'http://localhost:3001', methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'], credentials: true }));
+app.use(cors({
+  origin: 'http://localhost:3001',
+  methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'],
+  credentials: true,
+  maxAge: 30,
+}));
 
 // приложение прочитает тело запроса и выведет в формате json
 app.use(express.json());

@@ -21,18 +21,22 @@ export const register = (email, password) => {
 
 export const authorization = (email, password) => {
     return fetch(`${BASE_URL}/signin`, {
-      credentials: 'include',
       method: 'POST',
+      credentials: 'include',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ email, password })
     })
-    .then((res) => checkResponse(res));
+    .then((res) => checkResponse(res))
+    .then((data) => {
+      localStorage.setItem("userId", data._id)
+      return data;
+    })
   }
 
 export const tokenCheck = () => {
   return fetch(`${BASE_URL}/users/me`, {
-    credentials: 'include',
     method: 'GET',
+    credentials: 'include',
     headers: {'Content-Type': 'application/json'},
   })
     .then((res) => checkResponse(res));

@@ -54,7 +54,7 @@ function App() {
       api
         .getInitialCards()
         .then((cardsInfo) => {
-          setCards(cardsInfo);
+          setCards(cardsInfo.reverse());
         })
         .catch((err) => {
           console.log(err);
@@ -65,7 +65,7 @@ function App() {
   //лайк
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
       .likeCard(card._id, !isLiked)
@@ -248,13 +248,13 @@ function App() {
 
   //проверка токена
   const tokenCheck = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("userId");
     if (token) {
       auth
-        .tokenCheck(token)
+        .tokenCheck()
         .then((res) => {
           handleLoginTrueStatus();
-          setUserEmail(res.data.email);
+          setUserEmail(res.email);
           navigate("/");
         })
         .catch((err) => {
@@ -270,7 +270,7 @@ function App() {
 
   //удаление токена после выхода из аккаунта
   function onSignOut() {
-    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     navigate("/sign-in");
   }
 
