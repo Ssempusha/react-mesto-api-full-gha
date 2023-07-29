@@ -10,7 +10,7 @@ const errorHandler = require('./middlewares/errors');
 const NotFoundError = require('./errors/not-found-err');
 // создаём приложение
 const app = express();
-mongoose.connect('mongodb://localhost:27017/mestodb', { family: 4 });
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb', { family: 4 });
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const usersRouter = require('./routes/users');
