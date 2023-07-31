@@ -1,6 +1,6 @@
 //export const BASE_URL = 'https://auth.nomoreparties.co';
 //export const BASE_URL = 'http://localhost:3000';
-export const BASE_URL = 'http://api.sempusha.nomoreparties.co';
+export const BASE_URL = 'https://api.sempusha.nomoreparties.co';
 
 function checkResponse(res) {
   if (res.ok) {
