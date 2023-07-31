@@ -104,7 +104,7 @@ class Api {
 export const api = new Api({
   // url: 'https://mesto.nomoreparties.co/v1/cohort-64',
   // url: 'http://localhost:3000',
-  url: 'http://sempusha.nomoreparties.co',
+  url: 'http://api.sempusha.nomoreparties.co',
   headers: {
     authorization: '',
     'Content-Type': 'application/json'
