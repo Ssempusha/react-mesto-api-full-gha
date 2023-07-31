@@ -34,26 +34,12 @@ function App() {
 
   const navigate = useNavigate();
 
-  //получаем и устанавливаем информацию о пользователе с сервера
+  //получаем и устанавливаем информацию о пользователе с сервера, а также делаем запрос на список карточек
   useEffect(() => {
     if (loggedIn) {
-      api
-        .getUserInfo()
-        .then((userInfo) => {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([userInfo, cardsInfo]) => {
           setCurrentUser(userInfo);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [loggedIn]);
-
-  //запрос списка карточек
-  useEffect(() => {
-    if (loggedIn) {
-      api
-        .getInitialCards()
-        .then((cardsInfo) => {
           setCards(cardsInfo.reverse());
         })
         .catch((err) => {
@@ -270,7 +256,9 @@ function App() {
 
   //удаление токена после выхода из аккаунта
   function onSignOut() {
+    setCurrentUser({});
     localStorage.removeItem("userId");
+    setLoggedIn(false);
     navigate("/sign-in");
   }
 
