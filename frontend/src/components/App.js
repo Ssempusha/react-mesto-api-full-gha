@@ -266,7 +266,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [loggedIn]);
 
   //удаление токена после выхода из аккаунта
   function onSignOut() {
