@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.252.130.12
+IP 84.252.130.12
 
 Frontend https://sempusha.nomoreparties.co
 
