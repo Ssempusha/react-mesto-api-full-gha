@@ -66,10 +66,12 @@ const login = (req, res, next) => {
         .then((isValidUser) => {
           if (isValidUser) {
             // создаётся JWT
-            const token = jwt.sign({
-              _id: user._id,
-              expiresIn: '7d', // токен будет просрочен через неделю после создания
-            }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'); // секретное слово
+            const token = jwt.sign(
+              { _id: user._id },
+              NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', // секретный код
+              // токен будет просрочен через неделю после создания);
+              { expiresIn: '7d' },
+            );
             // JWT прикрепляется к куке
             res.cookie('token', token, { // 1 параметрт просто название, второй параметр это то что мы туда кладём
               maxAge: 3600000 * 24 * 7, // срок хранения 7 дней
