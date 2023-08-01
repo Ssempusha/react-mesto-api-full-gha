@@ -11,7 +11,6 @@ const errorHandler = require('./middlewares/errors');
 const NotFoundError = require('./errors/not-found-err');
 // создаём приложение
 const app = express();
-const { PORT } = process.env;
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', { family: 4 });
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
@@ -74,6 +73,6 @@ app.use(errors()); // обработчик ошибок celebrate
 app.use(errorHandler);
 
 // обращение к 3000 порту
-app.listen(PORT, () => {
+app.listen(3000, () => {
   console.log('Сервер запущен');
 });
