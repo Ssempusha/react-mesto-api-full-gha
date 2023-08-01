@@ -37,11 +37,11 @@ app.use(limiter);
 app.use(requestLogger); // подключаем логгер запросов
 
 // краш тест
-app.get('/crash-test', () => {
+/* app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
-});
+}); */
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
