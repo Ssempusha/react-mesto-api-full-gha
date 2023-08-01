@@ -1,3 +1,4 @@
+const { NODE_ENV, JWT_SECRET } = process.env;
 const bcrypt = require('bcryptjs'); // подключаем модуль для хэширования
 const jwt = require('jsonwebtoken'); // импортируем модуль jsonwebtoken для создания токена
 const User = require('../models/user');
@@ -67,7 +68,7 @@ const login = (req, res, next) => {
             const token = jwt.sign({
               _id: user._id,
               expiresIn: '7d', // токен будет просрочен через неделю после создания
-            }, 'super-mega-strong-secret'); // секретное слово
+            }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'); // секретное слово
             // JWT прикрепляется к куке
             res.cookie('token', token, { // 1 параметрт просто название, второй параметр это то что мы туда кладём
               maxAge: 3600000 * 24 * 7, // срок хранения 7 дней

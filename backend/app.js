@@ -1,4 +1,5 @@
 // экспортируем express для создания сервера
+require('dotenv').config(); // для .evn(файл для скрытия переменных)
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -10,7 +11,8 @@ const errorHandler = require('./middlewares/errors');
 const NotFoundError = require('./errors/not-found-err');
 // создаём приложение
 const app = express();
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb', { family: 4 });
+const { PORT, DB_ADDRESS } = process.env;
+mongoose.connect(DB_ADDRESS, { family: 4 });
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const usersRouter = require('./routes/users');
@@ -29,6 +31,13 @@ app.use(cors({
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
+
+// краш тест
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 // подключаем rate-limiter
 app.use(limiter);
@@ -64,6 +73,6 @@ app.use(errors()); // обработчик ошибок celebrate
 app.use(errorHandler);
 
 // обращение к 3000 порту
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('Сервер запущен');
 });
