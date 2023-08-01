@@ -21,9 +21,10 @@ const { regexUrl } = require('./utils/constants');
 const { limiter } = require('./utils/limiter');
 
 app.use(cors({
-  origin: ['http://localhost:3001', 'http://sempusha.nomoreparties.co', 'https://sempusha.nomoreparties.co', 'http://api.sempusha.nomoreparties.co', 'https://api.sempusha.nomoreparties.co'],
+  origin: ['http://localhost:3001', 'http://sempusha.nomoreparties.co', 'https://sempusha.nomoreparties.co'],
   methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'],
   credentials: true,
+  optionsSuccessStatus: 200,
   maxAge: 30,
 }));
 
